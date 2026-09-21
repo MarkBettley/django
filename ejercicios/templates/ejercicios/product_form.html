@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Producto</title>
+</head>
+<body>
+
+    <h1>Crear o editar producto</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    <br>
+
+    <a href="{% url 'product-list' %}">
+        Volver a la lista
+    </a>
+
+</body>
+</html>

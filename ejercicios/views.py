@@ -51,3 +51,59 @@ def inicio(request):
         f"<p>Total con tasa por 10 unidades: "
         f"${producto_internacional.calcular_total_con_tasa(10)}</p>"
     )
+from django.urls import reverse_lazy
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
+
+from .models import ProductModel
+
+
+class ProductListView(ListView):
+    model = ProductModel
+    template_name = "ejercicios/product_list.html"
+    context_object_name = "products"
+
+
+class ProductDetailView(DetailView):
+    model = ProductModel
+    template_name = "ejercicios/product_detail.html"
+    context_object_name = "product"
+
+
+class ProductCreateView(CreateView):
+    model = ProductModel
+    fields = [
+        "name",
+        "price",
+        "description",
+        "seller",
+        "color",
+        "product_dimensions",
+    ]
+    template_name = "ejercicios/product_form.html"
+    success_url = reverse_lazy("product-list")
+
+
+class ProductUpdateView(UpdateView):
+    model = ProductModel
+    fields = [
+        "name",
+        "price",
+        "description",
+        "seller",
+        "color",
+        "product_dimensions",
+    ]
+    template_name = "ejercicios/product_form.html"
+    success_url = reverse_lazy("product-list")
+
+
+class ProductDeleteView(DeleteView):
+    model = ProductModel
+    template_name = "ejercicios/product_confirm_delete.html"
+    success_url = reverse_lazy("product-list")
