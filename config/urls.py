@@ -23,6 +23,7 @@ from ejercicios.views import (
     ProductCreateView,
     ProductUpdateView,
     ProductDeleteView,
+    ProtectedListView,
 )
 
 
@@ -58,5 +59,10 @@ urlpatterns = [
         'products/<int:pk>/delete/',
         ProductDeleteView.as_view(),
         name='product-delete'
+    ),
+    path(
+        'my-products/',
+        ProtectedListView.as_view(),
+        name='my-products'
     ),
 ]

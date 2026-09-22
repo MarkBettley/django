@@ -107,3 +107,15 @@ class ProductDeleteView(DeleteView):
     model = ProductModel
     template_name = "ejercicios/product_confirm_delete.html"
     success_url = reverse_lazy("product-list")
+
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class ProtectedListView(LoginRequiredMixin, ListView):
+    model = ProductModel
+    template_name = "ejercicios/product_list.html"
+    context_object_name = "products"
+
+    def get_queryset(self):
+        return ProductModel.objects.filter(user=self.request.user)
