@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.views import LoginView
 from django.urls import path
 from ejercicios.views import (
     inicio,
@@ -24,6 +25,7 @@ from ejercicios.views import (
     ProductUpdateView,
     ProductDeleteView,
     ProtectedListView,
+    register,
 )
 
 
@@ -64,5 +66,18 @@ urlpatterns = [
         'my-products/',
         ProtectedListView.as_view(),
         name='my-products'
+    ),
+    path(
+        'register/',
+        register,
+        name='register'
+    ),
+
+    path(
+        'accounts/login/',
+        LoginView.as_view(
+            template_name='ejercicios/login.html'
+        ),
+        name='login'
     ),
 ]
