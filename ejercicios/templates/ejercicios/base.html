@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Mi eCommerce
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+    <header>
+        <h1>Mi eCommerce</h1>
+
+        <nav>
+            <a href="{% url 'product-list' %}">
+                Productos
+            </a>
+
+            <a href="{% url 'my-products' %}">
+                Mis productos
+            </a>
+
+            <a href="{% url 'register' %}">
+                Registrarse
+            </a>
+        </nav>
+
+        <hr>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>Proyecto Django</p>
+    </footer>
+
+</body>
+</html>

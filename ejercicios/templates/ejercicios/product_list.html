@@ -1,44 +1,46 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de productos</title>
-</head>
-<body>
+{% extends "ejercicios/base.html" %}
+
+{% block title %}
+    Lista de productos
+{% endblock %}
+
+{% block content %}
 
     <h1>Lista de productos</h1>
 
-    <a href="{% url 'product-create' %}">Crear nuevo producto</a>
+    <a href="{% url 'product-create' %}">
+        Crear nuevo producto
+    </a>
 
     <hr>
 
     {% if products %}
+
         {% for product in products %}
-            <h2>{{ product.name }}</h2>
 
-            <p>Precio: ${{ product.price }}</p>
-            <p>Descripción: {{ product.description }}</p>
-            <p>Vendedor: {{ product.seller }}</p>
-            <p>Color: {{ product.color }}</p>
-            <p>Dimensiones: {{ product.product_dimensions }}</p>
+            <p>
+                Producto número:
+                {{ forloop.counter }}
+            </p>
 
-            <a href="{% url 'product-detail' product.pk %}">
-                Ver detalle
-            </a>
+            {% if forloop.counter|divisibleby:"5" %}
+                <p>
+                    Esta iteración es divisible entre 5.
+                </p>
+            {% endif %}
 
-            <a href="{% url 'product-update' product.pk %}">
-                Editar
-            </a>
-
-            <a href="{% url 'product-delete' product.pk %}">
-                Eliminar
-            </a>
+            {% include "ejercicios/product_card.html" with product=product %}
 
             <hr>
+
         {% endfor %}
+
     {% else %}
-        <p>No hay productos registrados.</p>
+
+        <p>
+            No hay productos registrados.
+        </p>
+
     {% endif %}
 
-</body>
-</html>
+{% endblock %}

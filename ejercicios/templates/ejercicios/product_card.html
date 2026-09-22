@@ -1,14 +1,8 @@
-{% extends "ejercicios/base.html" %}
+<article>
 
-{% block title %}
-    Detalle de {{ product.name }}
-{% endblock %}
-
-{% block content %}
-
-    <h1>
+    <h2>
         {{ product.name|upper }}
-    </h1>
+    </h2>
 
     <p>
         <strong>Precio:</strong>
@@ -17,7 +11,7 @@
 
     <p>
         <strong>Descripción:</strong>
-        {{ product.description }}
+        {{ product.description|truncatechars:40 }}
     </p>
 
     <p>
@@ -35,18 +29,8 @@
         {{ product.product_dimensions }}
     </p>
 
-    <hr>
-
-    <a href="{% url 'product-update' product.pk %}">
-        Editar producto
+    <a href="{% url 'product-detail' product.pk %}">
+        Ver detalle
     </a>
 
-    <a href="{% url 'product-delete' product.pk %}">
-        Eliminar producto
-    </a>
-
-    <a href="{% url 'product-list' %}">
-        Volver a la lista
-    </a>
-
-{% endblock %}
+</article>
