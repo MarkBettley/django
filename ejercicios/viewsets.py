@@ -2,12 +2,14 @@ from rest_framework import status, viewsets
 from rest_framework.response import Response
 
 from .models import ProductModel
+from .pagination import ProductPagination
 from .serializers import ProductSerializer
 
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = ProductModel.objects.all().order_by("id")
     serializer_class = ProductSerializer
+    pagination_class = ProductPagination
 
     # CREATE - Crear
     def create(self, request, *args, **kwargs):
@@ -24,13 +26,25 @@ class ProductViewSet(viewsets.ModelViewSet):
             status=status.HTTP_201_CREATED,
         )
 
-    # LIST - Listar
+    # LIST - Listar con paginación
     def list(self, request, *args, **kwargs):
         print("ViewSet LIST ejecutado")
 
         queryset = self.filter_queryset(
             self.get_queryset()
         )
+
+        page = self.paginate_queryset(queryset)
+
+        if page is not None:
+            serializer = self.get_serializer(
+                page,
+                many=True,
+            )
+
+            return self.get_paginated_response(
+                serializer.data
+            )
 
         serializer = self.get_serializer(
             queryset,
