@@ -14,9 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+"""
+URL configuration for config project.
+"""
+
 from django.contrib import admin
 from django.contrib.auth.views import LoginView
 from django.urls import path
+
+from ejercicios.api import products_api
 from ejercicios.views import (
     inicio,
     ProductListView,
@@ -62,11 +68,13 @@ urlpatterns = [
         ProductDeleteView.as_view(),
         name='product-delete'
     ),
+
     path(
         'my-products/',
         ProtectedListView.as_view(),
         name='my-products'
     ),
+
     path(
         'register/',
         register,
@@ -79,5 +87,18 @@ urlpatterns = [
             template_name='ejercicios/login.html'
         ),
         name='login'
+    ),
+
+    # API REST
+    path(
+        'api/products/',
+        products_api,
+        name='api-products'
+    ),
+
+    path(
+        'api/products/<int:product_id>/',
+        products_api,
+        name='api-product-detail'
     ),
 ]
