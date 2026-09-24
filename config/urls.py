@@ -20,9 +20,11 @@ URL configuration for config project.
 
 from django.contrib import admin
 from django.contrib.auth.views import LoginView
-from django.urls import path
+from django.urls import include, path
+from rest_framework.routers import DefaultRouter
 
 from ejercicios.api import products_api
+from ejercicios.viewsets import ProductViewSet
 from ejercicios.views import (
     inicio,
     ProductListView,
@@ -32,6 +34,14 @@ from ejercicios.views import (
     ProductDeleteView,
     ProtectedListView,
     register,
+)
+
+
+router = DefaultRouter()
+router.register(
+    "products",
+    ProductViewSet,
+    basename="viewset-products",
 )
 
 
@@ -89,7 +99,7 @@ urlpatterns = [
         name='login'
     ),
 
-    # API REST
+    # API REST del ejercicio anterior
     path(
         'api/products/',
         products_api,
@@ -100,5 +110,11 @@ urlpatterns = [
         'api/products/<int:product_id>/',
         products_api,
         name='api-product-detail'
+    ),
+
+    # Django REST Framework ViewSet
+    path(
+        'api/viewset/',
+        include(router.urls),
     ),
 ]
