@@ -1,0 +1,61 @@
+==============================================================
+              DASHBOARD FINANCIERO ECOMMERCE
+==============================================================
+
+ [ Rango de fechas ]              [ Filtro por categoría ]
+ [ 01/01/2026 - 23/09/2026 ]      [ Todas las categorías ]
+
+
++---------------+ +---------------+ +---------------+ +---------------+
+|   INGRESOS    | |    COSTOS     | |   UTILIDAD    | |    MARGEN     |
+|               | |               | |               | |               |
+|   $ TOTAL     | |   $ TOTAL     | |   $ TOTAL     | |      %        |
++---------------+ +---------------+ +---------------+ +---------------+
+
+
++------------------------------------------------------------+
+|                                                            |
+|          EVOLUCIÓN DE INGRESOS Y UTILIDAD                  |
+|                                                            |
+|  $  |                         /---\                        |
+|     |            /---\       /     \----                   |
+|     |      /----/     \-----/                              |
+|     |-----/                                                |
+|     +------------------------------------------------>      |
+|                         FECHA                              |
++------------------------------------------------------------+
+
+
++-----------------------------+ +----------------------------+
+|                             | |                            |
+| INGRESOS POR CATEGORÍA      | | TOP PRODUCTOS VENDIDOS    |
+|                             | |                            |
+| Tecnología  ███████████     | | Producto A ███████████    |
+| Hogar       ███████         | | Producto B █████████      |
+| Ropa        █████           | | Producto C ███████        |
+| Accesorios  ████            | | Producto D █████          |
+|                             | |                            |
++-----------------------------+ +----------------------------+
+
+
++------------------------------------------------------------+
+|                                                            |
+|              INGRESOS VS UTILIDAD                          |
+|                                                            |
+| Utilidad                                                   |
+|    |                         ● Tecnología                   |
+|    |               ● Hogar                                 |
+|    |        ● Ropa                                         |
+|    |    ● Accesorios                                       |
+|    +------------------------------------------------>       |
+|                         Ingresos                           |
+|                                                            |
++------------------------------------------------------------+
+
+
+INTERACTIVIDAD PROPUESTA
+
+- Seleccionar un rango de fechas.
+- Filtrar una o varias categorías.
+- Actualizar automáticamente los indicadores financieros.
+- Actualizar automáticamente todas las gráficas.
