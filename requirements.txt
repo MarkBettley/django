@@ -1,0 +1,8 @@
+Django==6.1.1
+djangorestframework
+pandas
+plotly
+dash
+pyspark
+requests
+beautifulsoup4
